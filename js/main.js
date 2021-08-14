@@ -1,5 +1,7 @@
 
 console.log('Sample JavaScript #1 HW #15');
+
+
 /*
  * #1
  *
@@ -542,7 +544,7 @@ console.log(counting.value()); // 201
  */
 
 let myPrint = (a, b, res) => `${a}^${b}=${res}`;
-function myPow(a, b, cb) {
+function myHow(a, b, cb) {
     function cbPow(c, d) {
         if (d !== 1) return c *= cbPow(c, d - 1);
         return c;
@@ -550,8 +552,8 @@ function myPow(a, b, cb) {
     return cb(a, b, cbPow(a, b));
 }
 
-console.log(myPow(3, 4, myPrint)); // 3^4=81
-console.log(myPow(2, 3, myPrint)); // 2^3=8
+console.log(myHow(3, 4, myPrint)); // 3^4=81
+console.log(myHow(2, 3, myPrint)); // 2^3=8
 
 
 
@@ -567,71 +569,71 @@ console.log(myPow(2, 3, myPrint)); // 2^3=8
  * car.year – год выпуска, число
  * car.used – строка для описания состояния авто, допускаются значения 'used' и 'new'
 */
-let fullInfo = function () { return `${this.name} ${this.model}, ${this.engine}cc, year ${this.year}, ${this.used}`; }
+// let fullInfo = function () { return `${this.name} ${this.model}, ${this.engine}cc, year ${this.year}, ${this.used}`; }
 
 
-let yearNow = new Date().getFullYear();
-let car = {
-    engine: 1800,
-    model: 'Ford',
-    name: 'Mustang',
-    year: 2012,
-    info: fullInfo,
-    get used() {
-        return this.year !== yearNow ? 'used' : 'new';
-    },
-    set used(value) {
-        if (value === 'new' && this.year < yearNow) this.year = yearNow;
-    }
-};
-let carAndrey = {
-    engine: 2200,
-    model: 'Lada',
-    name: 'Granta',
-    year: 2021,
-    info: fullInfo,
-    get used() {
-        return yearNow - this.year ? 'used' : 'new';
-    },
-    set used(value) {
-        if (value === 'new' && this.year < yearNow) this.year = yearNow;
-    }
-};
-let carUra = {
-    engine: 2000,
-    model: 'Reno',
-    name: 'Laguna III',
-    year: 2018,
-    info: fullInfo,
-    get used() {
-        return yearNow - this.year ? 'used' : 'new';
-    },
-    set used(value) {
-        if (value === 'new' && this.year < yearNow) this.year = yearNow;
-    }
-};
-let carDima = {
-    engine: 3000,
-    model: 'Toyota',
-    name: 'Tundra',
-    year: 2010,
-    info: fullInfo,
-    get used() {
-        return yearNow - this.year ? 'used' : 'new';
-    },
-    set used(value) {
-        if (value === 'new' && this.year < yearNow) this.year = yearNow;
-    }
-};
+// let yearNow = new Date().getFullYear();
+// let car = {
+//     engine: 1800,
+//     model: 'Ford',
+//     name: 'Mustang',
+//     year: 2012,
+//     info: fullInfo,
+//     get used() {
+//         return this.year !== yearNow ? 'used' : 'new';
+//     },
+//     set used(value) {
+//         if (value === 'new' && this.year < yearNow) this.year = yearNow;
+//     }
+// };
+// let carAndrey = {
+//     engine: 2200,
+//     model: 'Lada',
+//     name: 'Granta',
+//     year: 2021,
+//     info: fullInfo,
+//     get used() {
+//         return yearNow - this.year ? 'used' : 'new';
+//     },
+//     set used(value) {
+//         if (value === 'new' && this.year < yearNow) this.year = yearNow;
+//     }
+// };
+// let carUra = {
+//     engine: 2000,
+//     model: 'Reno',
+//     name: 'Laguna III',
+//     year: 2018,
+//     info: fullInfo,
+//     get used() {
+//         return yearNow - this.year ? 'used' : 'new';
+//     },
+//     set used(value) {
+//         if (value === 'new' && this.year < yearNow) this.year = yearNow;
+//     }
+// };
+// let carDima = {
+//     engine: 3000,
+//     model: 'Toyota',
+//     name: 'Tundra',
+//     year: 2010,
+//     info: fullInfo,
+//     get used() {
+//         return yearNow - this.year ? 'used' : 'new';
+//     },
+//     set used(value) {
+//         if (value === 'new' && this.year < yearNow) this.year = yearNow;
+//     }
+// };
 
-console.log(car.info());
-car.used = 'new';
-console.log(car.info());
-car.used = 'used';
-console.log(car.info());
-console.log(carAndrey.info());
-car.used = 'used';
-console.log(carAndrey.info())
+// console.log(car.info());
+// car.used = 'new';
+// console.log(car.info());
+// car.used = 'used';
+// console.log(car.info());
+// console.log(carAndrey.info());
+// car.used = 'used';
+// console.log(carAndrey.info())
 /*
 * #5
 *
@@ -728,3 +730,198 @@ let myUniq = (arr) => {
 }
 console.log(myUniq(notUniqNums));
 console.log(myUniq(notUniqStrings));
+
+
+
+console.log('Sample JavaScript #4 HW #18');
+
+
+/*
+ * #1
+ *
+ * Создайте функцию wordsList(str, subStr), принимающую два параметра:
+ * строку текста произвольной длины и подстроку для поиска.
+ * Функция должна вернуть коллекцию уникальных слов в нижнем регистре, без символов-разделителей, т.е.:
+ * из строки str необходимо удалить все следующие символы: . , ! ? ; : "
+ * привести строку к нижнему регистру
+ * получить коллекцию уникальных, неповторяющихся слов, в которых содержится подстрока,
+ * переданная в параметре subStr.
+ */
+
+
+let myLongStr = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam iusto esse explicabo soluta neque excepturi a saepe, accusamus obcaecati adipisci aliquam sint laborum placeat porro fugit sed odit quos pariatur. Voluptatem minus dolores sed dolorum est reiciendis suscipit culpa itaque exercitationem, voluptatum, dolor vero. Magnam, magni beatae fugiat debitis doloribus autem nam corporis odit neque saepe aperiam, perspiciatis, harum molestias?';
+
+let wordsList = (str, subStr) => {
+    let regExp = new RegExp('\\.|,|\\?|!|:|;|"', 'g');
+    let myArr = str.replaceAll(regExp, '').toLowerCase().split(' ').filter((myArrItem) => myArrItem.indexOf(subStr) > -1)
+    let res = new Set(myArr);
+    return res;
+}
+console.log(wordsList(myLongStr, 'lo'));
+console.log(wordsList(myLongStr, 'do'));
+
+/*
+ * #2
+ *
+ * Создайте функцию getLocalDate(date, isSeconds, isISO), которая будет принимать любую
+ * дату от конструктора new Date и преобразовывать ее в следующие форматы в зависимости от параметров:
+ * getLocalDate(date)              → dd.mm.yyyy, hh:mm,    например: 16.07.2019, 00:15
+ * getLocalDate(date, true)        → dd.mm.yyyy, hh:mm:ss, например: 16.07.2019, 00:15:32
+ * getLocalDate(date, false, true) → yyyy-mm-dd, hh:mm,    например: 2019-06-02, 00:15
+ * getLocalDate(date, true, true)  → yyyy-mm-dd, hh:mm:ss, например: 2019-06-02, 00:15:32
+ * date – любая дата из конструктора new Date().
+ * isSeconds – опциональный параметр для отображения секунд в дате.
+ * isISO – опциональный параметр переключения формата даты.
+ */
+
+let myDate = new Date();
+let getLocalDate = (date, isSeconds = false, isISO = false) => {
+    const reg = new RegExp(':\\d{2}$', 'gui');
+    let res;
+    if (!isISO) res = isSeconds
+        ? date.toLocaleString()
+        : date.toLocaleString().replace(reg, '');
+    else {
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1 < 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+        const day = date.getDate() < 9 ? `0${date.getDate()}` : date.getDate();
+        const hour = date.getHours() < 9 ? `0${date.getHours()}` : date.getHours();
+        const minutes = date.getMinutes() < 9 ? `0${date.getMinutes()}` : date.getMinutes();
+        const seconds = date.getSeconds() < 9 ? `0${date.getSeconds()}` : date.getSeconds();
+        res = isSeconds
+            ? `${year}-${month}-${day}, ${hour}:${minutes}:${seconds}`
+            : `${year}-${month}-${day}, ${hour}:${minutes}`;
+    }
+    return res;
+};
+
+/*
+ * #3
+ *
+ * Создайте функцию getWeekDay(date), которая принимает дату в виде строки в формате 'yyyy-mm-dd'
+ * и выводит текущий день недели: "понедельник", "вторник", … "воскресенье".
+ */
+
+let getWeekDay = (d) => {
+    const date = new Date(d);
+    let days = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+    return days[date.getDay()]
+}
+
+console.log(getWeekDay('2021-08-15'));
+
+
+
+/*
+ * #4
+ *
+ * Напишите функцию, getLocalDay(date) которая возвращает день недели для даты date.
+ * День нужно возвратить в европейской нумерации, т.е. понедельник имеет номер 1, вторник номер 2, …, воскресенье – номер 7.
+ */
+let getLocalDay = (d) => {
+    const date = new Date(d);
+    let day = date.getDay();
+    if (day === 0) day = 7;
+    return day;
+
+}
+console.log(getLocalDay('2021-08-15'));
+
+/*
+ * #5
+ *
+ * Создайте функцию getDateAgo(date, days), которая возвращает дату,
+ * которая была days дней назад от указанной даты date.
+ * Дата принимается в формате YYYY-MM-DD, возвращается DD.MM.YYYY.
+ */
+let getDateAgo = (d, days) => {
+    const date = new Date(d);
+    let reg = new RegExp(/(\d.*),\s(\d.*)/g);
+    date.setDate(date.getDate() - days);
+    return date.toLocaleString().replace(reg, '$1');
+}
+
+console.log(getDateAgo('2021-08-12', 1));
+
+
+/*
+ * #6
+ *
+ * Используя в качестве основы, объект car, описанный в прошлом занятии, создайте прототип Car,
+ * реализующий те же поля (#17.4) и методы(#17.5 и #17.6) у создаваемых объектов.
+ *
+ * Например:
+ * let car = new Car(2000, 'Lacetti', 'Chevrolet', 2010);
+ * let car2 = new Car(5000, 'FX50 AWD', 'Infinite', 2019);
+ *
+ * Способ создания прототипа – только функция-конструктор!
+ * Объекты и их методы, созданные прототипом должны полностью соответствовать объектам из прошлого задания.
+ */
+let Car = function (engine, model, name, year) {
+    this.engine = engine,
+        this.model = model,
+        this.name = name,
+        this.year = year
+}
+Object.defineProperties(Car.prototype, {
+    used: {
+        get() {
+            let yearNow = new Date().getFullYear();
+            if (yearNow - this.year > 1) {
+                return 'used';
+            } else return 'new'
+        },
+        set(value) {
+            let yearNow = new Date().getFullYear();
+            if (value === 'new' && this.year < yearNow) this.year = yearNow;
+        }
+    }
+});
+
+
+Car.prototype.info = function () {
+    return `${this.name} ${this.model}, ${this.engine}cc, year ${this.year}, ${this.used}`;
+}
+
+let car = new Car(1800, 'Mustang', 'Ford', 2012);
+let carAndrey = new Car(2200, 'Granta', 'Lada', 2021);
+
+console.log(car.info());
+car.used = 'new';
+console.log(car.info());
+car.used = 'used';
+console.log(car.info());
+console.log(carAndrey.info());
+car.used = 'used';
+console.log(carAndrey.info());
+
+
+/*
+ * #7
+ * Напишите функцию testPerformance(iterations, func) для тестирования производительности любых, переданных ей в качестве параметра функций.
+ * iterations – количество повторений для тестирования.
+ * func – тестируемая функция.
+ *
+ * Если в качестве параметра передается что-либо кроме функции, тестирование не выполняется, возвращается 0.
+ */
+
+let testPerformance = (iterations, func) => {
+    let date = Date.now();
+    if (typeof func === 'function') for (let i = iterations; i--;) func();
+    return Date.now() - date;
+};
+function test1() {
+    let str = myLongStr;
+    while (str.indexOf('o') !== -1) str = str.replace('o', '');
+    while (str.indexOf('a') !== -1) str = str.replace('a', '');
+    while (str.indexOf('e') !== -1) str = str.replace('e', '');
+    while (str.indexOf('u') !== -1) str = str.replace('u', '');
+    while (str.indexOf('i') !== -1) str = str.replace('i', '');
+}
+function test2() {
+    const reg = new RegExp('[oaeui]', 'gui');
+    myLongStr.replace(reg, '');
+}
+console.log(testPerformance(100, test1));
+console.log(testPerformance(100, test2));
+console.log(testPerformance(100, 12345));
