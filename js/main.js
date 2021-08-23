@@ -930,7 +930,7 @@
 
 
 
-console.log('Sample JavaScript #4 HW #18');
+console.log('Sample JavaScript #5 HW #19');
 /* eslint-disable no-unused-vars */
 /* eslint-disable func-style */
 /* eslint-disable require-jsdoc */
